@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NanoPromt Prompt Gallery</title>
+  <meta name="description" content="Discover, share, and create amazing AI art prompts on NanoPromt, the ultimate destination for AI-generated art prompts and creative inspiration.">
+  <meta name="keywords" content="AI prompts, art prompts, creative prompts, NanoPromt, AI art, prompt gallery, creative community">
+  <meta property="og:title" content="NanoPromt Prompt Gallery">
+  <meta property="og:description" content="Discover, share, and create amazing AI art prompts on NanoPromt, the ultimate destination for AI-generated art prompts and creative inspiration.">
+  <meta property="og:image" content="https://nanopromt.site/images/og-image.jpg">
+  <meta property="og:url" content="https://nanopromt.site/index.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NanoPromt Prompt Gallery">
+  <meta name="twitter:description" content="Discover, share, and create amazing AI art prompts on NanoPromt, the ultimate destination for AI-generated art prompts and creative inspiration.">
+  <meta name="twitter:image" content="https://nanopromt.site/images/twitter-image.jpg">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "NanoPromt",
+    "description": "AI Prompt Gallery & Creative Community",
+    "url": "https://nanopromt.site",
+    "publisher": {
+      "@type": "Organization",
+      "name": "NanoPromt"
+    }
+  }
+  </script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <h1 class="nav-logo">NanoPromt</h1>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li id="uploadNav" style="display:none"><a href="upload.html">Upload</a></li>
+        <li id="profileNav" style="display:none"><a href="profile.html">Profile</a></li>
+        <li class="search-container">
+          <input type="text" id="searchInput" placeholder="Search prompts or users...">
+        </li>
+        <li><button class="btn" id="loginBtn">Login with Google</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="hero">
+      <h1>Welcome to NanoPromt</h1>
+      <p>Discover, share, and create amazing AI art prompts</p>
+      <div class="hero-tabs">
+        <button class="tab-btn active" id="allBtn">All</button>
+        <button class="tab-btn" id="imageBtn">Image</button>
+        <button class="tab-btn" id="videoBtn">Video</button>
+      </div>
+    </div>
+    <div class="grid" id="gallery"></div>
+    <button id="showMoreBtn" class="btn" style="display:none;">Show More</button>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>NanoPromt</h3>
+        <p>AI Prompt Gallery & Creative Community</p>
+      </div>
+      <div class="footer-section">
+        <h3>Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="upload.html">Upload</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="https://www.facebook.com/TheNextora">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NanoPrompt. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Custom Modal -->
+  <div id="customModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modalTitle">Notification</h3>
+      </div>
+      <div class="modal-body">
+        <p id="modalMessage"></p>
+      </div>
+      <div class="modal-footer">
+        <button id="modalCancelBtn" class="btn-secondary">Cancel</button>
+        <button id="modalOkBtn" class="btn-primary">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

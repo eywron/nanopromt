@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upload Prompt - NanoPromt</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <h1 class="nav-logo">NanoPromt</h1>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li id="uploadNav" style="display:none"><a href="upload.html" class="active">Upload</a></li>
+        <li id="profileNav" style="display:none"><a href="profile.html">Profile</a></li>
+        <li><button class="btn" id="loginBtn">Login with Google</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="upload-main">
+    <div class="upload-container">
+      <h1>Upload a New Prompt</h1>
+      <div id="formBox" style="display:none">
+        <div class="form-group">
+          <label>Media Type</label>
+          <select id="mediaType">
+            <option value="image">Image</option>
+            <option value="video">Video (YouTube)</option>
+          </select>
+        </div>
+        <div class="form-group" id="imageGroup">
+          <label>Image Link (any direct link to an image)</label>
+          <input id="imgUrl" placeholder="https://i.imgur.com/xxxx.jpg">
+        </div>
+        <div class="form-group" id="videoGroup" style="display:none">
+          <label>Video Link (YouTube only)</label>
+          <input id="videoUrl" placeholder="https://www.youtube.com/watch?v=VIDEO_ID">
+        </div>
+
+        <!-- Upload Tutorials in Tab Format -->
+        <div class="upload-tutorials">
+          <h3 style="color: #ffd166; margin-bottom: 16px;">Upload Tutorials</h3>
+          <div class="tutorial-tabs">
+            <!-- Image Tabs -->
+            <button class="tab-btn image-tab active" data-tab="image-imgur"><i class="fab fa-imgur"></i> Imgur Guide</button>
+            <button class="tab-btn image-tab" data-tab="image-drive"><i class="fab fa-google-drive"></i> Google Drive Guide</button>
+            <button class="tab-btn image-tab" data-tab="image-other"><i class="fas fa-link"></i> Other Services</button>
+            <!-- Video Tabs -->
+            <button class="tab-btn video-tab" data-tab="video-youtube"><i class="fab fa-youtube"></i> YouTube Guide</button>
+            <button class="tab-btn video-tab" data-tab="video-tips"><i class="fas fa-lightbulb"></i> General Tips</button>
+          </div>
+          <div class="tab-content">
+            <!-- Image Panes -->
+            <div id="image-imgur" class="tab-pane active">
+              <div class="tip">
+                🖼️ <b>Supported Formats:</b> JPG, PNG, GIF, WebP, and other common image formats.<br><br>
+                <strong>Using Imgur (Recommended)</strong><br>
+                1. Visit <a href="https://imgur.com/upload" target="_blank">imgur.com/upload</a><br>
+                2. Drag and drop your image or click to browse<br>
+                3. Wait for upload to complete<br>
+                4. Right-click the image and select "Copy Image Address"<br>
+                5. Paste the direct link into the Image Link field above
+              </div>
+            </div>
+            <div id="image-drive" class="tab-pane">
+              <div class="tip">
+                🖼️ <strong>Using Google Drive</strong><br>
+                1. Upload your image to <a href="https://drive.google.com" target="_blank">Google Drive</a><br>
+                2. Right-click the uploaded file and choose "Get shareable link"<br>
+                3. Ensure sharing is set to "Anyone with the link can view"<br>
+                4. Copy the link and modify it: Replace the end with "/view?usp=sharing" to "/uc?id=FILE_ID"<br>
+                5. Paste the modified link into the Image Link field above
+              </div>
+            </div>
+            <div id="image-other" class="tab-pane">
+              <div class="tip">
+                🖼️ <strong>Other Hosting Services & Troubleshooting</strong><br>
+                <b>Other Services:</b><br>
+                • Use any reliable image hosting service that provides direct links<br>
+                • Avoid temporary links that expire<br>
+                • Test the link in a new browser tab to ensure it loads correctly<br><br>
+                <b>Troubleshooting:</b><br>
+                • If the image doesn't load, check if the link is direct and accessible<br>
+                • Some sites block hotlinking; use a hosting service instead
+              </div>
+            </div>
+            <!-- Video Panes -->
+            <div id="video-youtube" class="tab-pane">
+              <div class="tip">
+                🎥 <strong>YouTube Videos</strong><br>
+                • Standard URL: https://www.youtube.com/watch?v=VIDEO_ID<br>
+                • Short URL: https://youtu.be/VIDEO_ID<br>
+                • With timestamp: https://www.youtube.com/watch?v=VIDEO_ID&t=30<br>
+                • Playlist URLs are not supported; use the direct video URL
+              </div>
+            </div>
+
+            <div id="video-tips" class="tab-pane">
+              <div class="tip">
+                🎥 <strong>General Tips & Troubleshooting</strong><br>
+                <b>How to Get the Link:</b><br>
+                1. Open the video in your browser<br>
+                2. Copy the URL from the address bar<br>
+                3. Paste it directly into the Video Link field above<br><br>
+                <b>Embedding Notes:</b><br>
+                • Videos will be embedded in prompt cards<br>
+                • Users can click to play directly in the gallery<br>
+                • Private or restricted videos won't work<br><br>
+                <b>Troubleshooting:</b><br>
+                • If validation fails, double-check the URL format<br>
+                • Ensure the video is public and not age-restricted<br>
+                • Try refreshing the page if issues persist
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Prompt Text</label>
+          <textarea id="promptText" placeholder="Enter your AI prompt here..."></textarea>
+        </div>
+        <button class="btn btn-primary" id="uploadPrompt">Post Prompt</button>
+      </div>
+      <div id="loginBox" class="login-prompt">
+        <h2>Join Our Community</h2>
+        <p>Login to share your amazing AI prompts with the world!</p>
+        <button class="btn btn-primary" id="loginBtnUpload">Login with Google</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>NanoPromt</h3>
+        <p>AI Prompt Gallery & Creative Community</p>
+      </div>
+      <div class="footer-section">
+        <h3>Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="upload.html">Upload</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="https://www.facebook.com/TheNextora">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NanoPrompt. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Custom Modal -->
+  <div id="customModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modalTitle">Notification</h3>
+      </div>
+      <div class="modal-body">
+        <p id="modalMessage"></p>
+      </div>
+      <div class="modal-footer">
+        <button id="modalCancelBtn" class="btn-secondary">Cancel</button>
+        <button id="modalOkBtn" class="btn-primary">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

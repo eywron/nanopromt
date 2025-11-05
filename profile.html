@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile - NanoPromt</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <h1 class="nav-logo">NanoPromt</h1>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li id="uploadNav" style="display:none"><a href="upload.html">Upload</a></li>
+        <li id="profileNav" style="display:none"><a href="profile.html" class="active">Profile</a></li>
+        <li><button class="btn" id="loginBtn">Login with Google</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="profile-main">
+    <div class="profile-container">
+      <h1>Your Profile</h1>
+      <div class="profile-form">
+        <div class="user-header">
+          <img id="userPhoto" src="" alt="Profile Picture" style="width: 80px; height: 80px; border-radius: 50%; margin-right: 20px;">
+          <div>
+            <h3 id="userName">Loading...</h3>
+            <p id="joinedDate">Joined: Loading...</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="usernameInput">Username</label>
+          <input id="usernameInput" placeholder="Enter new username">
+        </div>
+        <button class="btn btn-primary" id="saveBtn">Save Changes</button>
+      </div>
+
+      <div class="profile-tabs">
+        <button id="uploadedBtn" class="tab-btn active">Your Uploaded Prompts</button>
+        <button id="savedBtn" class="tab-btn">Your Saved Prompts</button>
+      </div>
+
+      <div id="uploadedSection" class="profile-section active">
+        <div class="grid" id="userPrompts"></div>
+      </div>
+
+      <div id="savedSection" class="profile-section">
+        <div class="grid" id="savedPrompts"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>NanoPromt</h3>
+        <p>AI Prompt Gallery & Creative Community</p>
+      </div>
+      <div class="footer-section">
+        <h3>Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="upload.html">Upload</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="https://www.facebook.com/TheNextora">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NanoPrompt. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Custom Modal -->
+  <div id="customModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="modalTitle">Notification</h3>
+      </div>
+      <div class="modal-body">
+        <p id="modalMessage"></p>
+      </div>
+      <div class="modal-footer">
+        <button id="modalCancelBtn" class="btn-secondary">Cancel</button>
+        <button id="modalOkBtn" class="btn-primary">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
